@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rithesh N - Resume</title>
+    <style>
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.4;
+    font-size: 12.5px;
+    color: #000;
+    background-color: #fff;
+    padding: 20px 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.contact {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.contact a {
+    color: #000;
+    text-decoration: none;
+}
+
+.section {
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+}
+
+.item {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.item-content {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.item-date {
+    font-size: 11px;
+    white-space: nowrap;
+    min-width: 100px;
+    text-align: right;
+}
+
+.job-title {
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.company {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.education-item, .skills-list, .project-description, .activity-item {
+    font-size: 12px;
+    margin-bottom: 3px;
+    text-align: justify;
+}
+
+.degree, .grade, .project-title {
+    font-weight: bold;
+}
+
+.project-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.profile-text {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+.highlights-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.highlight-item {
+    flex: 1;
+    min-width: 180px;
+}
+
+.highlight-title {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.highlight-content {
+    font-size: 12px;
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="name">RITHESH N</div>
+        <div class="contact">
+            <a href="https://www.linkedin.com/in/ritheshan/" target="_blank">LINKEDIN</a> | 
+            ritheshanbgl@gmail.com | 
+            <a href="https://leetcode.com/rithesh_n" target="_blank">LEETCODE</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Profile Summary</div>
+        <p class="profile-text">
+            Motivated and results-driven technology enthusiast seeking a challenging technical role in a collaborative environment. Offering a strong foundation in web development, cybersecurity, and problem-solving, with a proven ability to learn quickly, adapt to new technologies, and deliver effective solutions.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Experience</div>
+        <div class="item">
+            <div class="item-content">
+                <div class="job-title">Product Engineer Intern</div>
+                <div class="company">Deloitte</div>
+                <div class="project-description">
+                    Worked on internal software products and client solutions as a full-stack developer. Gained hands-on experience with TypeScript and React for frontend development. Contributed to various projects including admin dashboards, form implementations, and UI enhancements. Collaborated with cross-functional teams to deliver scalable solutions for enterprise-level applications and internal tooling systems.
+                </div>
+            </div>
+            <div class="item-date">MAY 2025 - JUL 2025</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="item">
+            <div class="item-content">
+                <div class="education-item">
+                    <span class="degree">Bachelor of Engineering, Computer Science</span>
+                </div>
+                <div class="education-item">JSS STU (Formerly SJCE), Mysore</div>
+                <div class="education-item"><span class="grade">CGPA: 9.0</span></div>
+            </div>
+            <div class="item-date">NOV 2022 - PRESENT</div>
+        </div>
+        
+        <div class="item">
+            <div class="item-content">
+                <div class="education-item">
+                    <span class="degree">Pre-University (PCMB)</span>
+                </div>
+                <div class="education-item">ALVA'S PU College, Mangaluru</div>
+                <div class="education-item"><span class="grade">Percentage: 97.33%</span></div>
+            </div>
+            <div class="item-date">DEC 2020 - JUL 2022</div>
+        </div>
+        
+        <div class="item">
+            <div class="item-content">
+                <div class="education-item">
+                    <span class="degree">CBSE | SSLC</span>
+                </div>
+                <div class="education-item">Jawahar Navodaya Vidyalaya, Ballari</div>
+                <div class="education-item"><span class="grade">Percentage: 91%</span></div>
+            </div>
+            <div class="item-date">JUN 2016 - MAR 2020</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Projects</div>
+        <div class="item">
+            <div class="item-content">
+                <div class="project-title">FoodLoop - Node.js, Express, React, IPFS, Hardhat</div>
+                <div class="project-description">
+                    A full-stack donation platform that connects food donors with NGOs to reduce food waste. Integrated dynamic dashboards, real-time geolocation, and blockchain for donation tracking and NFT certificate minting. Used Node.js, Express, React, IPFS, and Hardhat.
+                </div>
+            </div>
+            <div class="item-date">
+                <a href="https://github.com/ritheshan/FoodLoop" target="_blank" style="color: #000;">GitHub</a>
+            </div>
+        </div>
+        
+        <div class="item">
+            <div class="item-content">
+                <div class="project-title">CilliBlog - MERN Stack</div>
+                <div class="project-description">
+                    A modern blog platform using the MERN stack, supporting user authentication, CRUD operations for posts, and responsive UI. Implemented JWT-based authentication, route protection, and a modular codebase for scalability.
+                </div>
+            </div>
+            <div class="item-date">
+                <a href="https://github.com/ritheshan/blog-app" target="_blank" style="color: #000;">GitHub</a>
+            </div>
+        </div>
+        
+        <div class="item">
+            <div class="item-content">
+                <div class="project-title">VoxBiz - Gen-AI, NLP, MERN Stack</div>
+                <div class="project-description">
+                    A Gen-AI-driven solution enabling voice-to-visualization capabilities business owners to query databases using voice input and get instant visual insights. Converts voice to text, generates SQL queries using NLP, executes them, and displays real-time data as tables and charts. Designed for decision-makers with no technical expertise.
+                </div>
+            </div>
+            <div class="item-date">
+                <a href="https://github.com/ritheshan/VoxBiz" target="_blank" style="color: #000;">GitHub</a>
+            </div>
+        </div>
+        
+        <div class="item">
+            <div class="item-content">
+              <div class="project-title">Other Projects</div>
+              <div class="project-description">
+                <strong>Journey Quest</strong> is a country-tracking travel app built using Node.js, Express, and PostgreSQL, featuring interactive SVG-based world map visualizations for tracking visited countries. Additionally, developed a <strong>Password Manager</strong>, a Python-based CLI tool that uses the Cryptography library to securely encrypt and store passwords, providing a simple and safe command-line interface for users.
+              </div>
+            </div>
+            <div class="item-date">
+              <a href="https://github.com/ritheshan" target="_blank" style="color: #000;">GitHub</a>
+            </div>
+          </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Key Competencies</div>
+        <div class="skills-list">• <strong>Languages & Tools:</strong>  C++, Python, SQL, TypeScript, Git</div>
+        <div class="skills-list">• <strong>Web Development:</strong> React.js, Node.js, Express.js, PostgreSQL, MongoDB, REST APIs</div>
+        <div class="skills-list">• <strong>Problem Solving:</strong> Data Structures and Algorithms (DSA)</div>
+        <div class="skills-list">• <strong>Cybersecurity:</strong> Security Fundamentals, OWASP basics</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Activities & Achievements</div>
+        <div class="activity-item">
+            <strong>Finalist – HackToFuture 3.0 (April 2025)</strong><br>
+            Selected among the top 30 teams nationally (700+ teams) at a 36-hour hackathon hosted by The Sceptix Club, SJEC, Mangaluru. Built VoxBiz – an AI-powered platform that converts natural language to SQL with real-time data visualizations using React, Recharts & NLTK. Team: RejuveNation — Sankalp Nadiger, Shrihari A S, Kushal S, Rithesh N.
+        </div>
+        <div class="activity-item">
+            <strong>HackXelerate'25 – KPRIET, Coimbatore (March 2025)</strong><br>
+            Developed FoodLoop, a blockchain-integrated food redistribution app during a 24-hour hackathon organized by the CSBS Department. Features include Admin Dashboard, Spoilage Detection (Google Vision), NFT delivery proofs, Volunteer Navigation, and Mobile App (Flutter). Addressed the real-world problem of food waste by connecting donors, NGOs & volunteers using smart logistics and real-time data. Team: Hitanshi Singh, Sujith Kumar, Rithesh N, Sankalp Nadiger, Namrata Peshwa.
+        </div>
+        <div class="activity-item">
+            <strong>DiPASL Tech Exhibition</strong><br>
+            Showcased the project 'DiPASL (Different Perspective of American Sign Language)' at Suttur Jatra Tech Exhibition, where we used an innovative solution using real-time hand gesture recognition over a three-day public expo.
+        </div>
+        <div class="activity-item">
+            <strong>Community Volunteer</strong><br>
+            Volunteered at events organized by Project ReachOut NGO, contributing to community outreach initiatives and supporting various social causes.
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Key Highlights</div>
+        <div class="highlights-section">
+            <div class="highlight-item">
+                <div class="highlight-title">LANGUAGES</div>
+                <div class="highlight-content">English (Professional), Kannada (Native), Hindi (Limited)</div>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-title">INTERESTS</div>
+                <div class="highlight-content">Coding, Reading, Cricket, Table Tennis</div>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-title">ACHIEVEMENTS</div>
+                <div class="highlight-content">KCET RANK (944), Regional Level Table Tennis Winner</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
