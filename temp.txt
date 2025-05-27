@@ -1,0 +1,73 @@
+const express = require('express');
+const router = express.Router();
+const users = require('../data/dummyUsers');
+const ExcelJS = require('exceljs');
+
+// Endpoint to export users to Excel with dropdown for Role
+router.get('/export', async (req, res) => {
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet('Users');
+
+  const roles = [
+    'Admin',
+    'Software Engineer',
+    'Project Manager',
+    'Business Analyst',
+    'QA Tester',
+    'UI/UX Designer',
+    'DevOps Engineer',
+    'Product Owner',
+    'Support Specialist'
+  ];
+
+  // Add a hidden sheet for roles
+  const roleSheet = workbook.addWorksheet('Roles');
+  roleSheet.state = 'veryHidden';
+
+  roles.forEach((role, index) => {
+    roleSheet.getCell(`A${index + 1}`).value = role;
+  });
+
+  // Define a named range for the roles
+  workbook.definedNames.add('RoleList', `Roles!$A$1:$A$${roles.length}`);
+
+  // Define columns
+  worksheet.columns = [
+    { header: 'ID', key: 'id', width: 10 },
+    { header: 'First Name', key: 'firstName', width: 25 },
+    { header: 'Last Name', key: 'lastName', width: 25 },
+    { header: 'Role', key: 'role', width: 35 },
+    { header: 'Status', key: 'status', width: 15 }
+  ];
+
+  // Add user data
+  users.forEach(user => {
+    worksheet.addRow({
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      role: user.role,
+      status: user.active ? 'Active' : 'Inactive'
+    });
+  });
+
+  // Apply dropdown to the "Role" column (D2:Dn)
+  for (let i = 2; i <= users.length + 1; i++) {
+    worksheet.getCell(`D${i}`).dataValidation = {
+      type: 'list',
+      allowBlank: true,
+      formulae: ['RoleList'],
+      showErrorMessage: true,
+      errorTitle: 'Invalid Role',
+      error: 'Please select a role from the dropdown.'
+    };
+  }
+
+  // Send the Excel file
+  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  res.setHeader('Content-Disposition', 'attachment; filename=users.xlsx');
+  await workbook.xlsx.write(res);
+  res.end();
+});
+
+module.exports = router;
