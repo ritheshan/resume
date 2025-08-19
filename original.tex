@@ -1,0 +1,371 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Rithesh N's CV},
+    pdfauthor={Rithesh N},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage{graphicx} % for including images
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+\usepackage{hyperref}
+\begin{document}
+
+  \begin{header}
+    \fontsize{25 pt}{25 pt}\selectfont RITHESH N
+
+    \vspace{5 pt}
+
+    \normalsize
+    \mbox{\raisebox{-0.1\height}\faLinkedin\hspace{2pt}\href{https://www.linkedin.com/in/ritheshan/}{ritheshan}} \hspace{10pt}%
+    \mbox{\raisebox{-0.1\height}\faEnvelope\hspace{2pt}\href{mailto:ritheshanbgl@gmail.com}{ritheshanbgl@gmail.com}} \hspace{10pt}%
+    \mbox{\raisebox{-0.1\height}{\includegraphics[height=0.3cm, width=0.3cm]{leetcode.png}}\hspace{2pt}\href{https://leetcode.com/rithesh_n}{rithesh\_n}}%
+\end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+    \section{Experience}
+
+        \begin{twocolentry}{
+            May 2025 – Jul 2025
+        }
+            \textbf{Product Engineer Intern}, Deloitte, India -- Bengaluru\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Worked on internal software products and client solutions as a full-stack developer
+                \item Gained hands-on experience with TypeScript and React for frontend development
+                \item Contributed to various projects including admin dashboards, form implementations, and UI enhancements
+                \item Collaborated with cross-functional teams to deliver scalable solutions for enterprise-level applications and internal tooling systems
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Education}
+
+        \begin{twocolentry}{
+            Nov 2022 – Present
+        }
+            \textbf{JSS STU (Formerly SJCE), Mysore}, Bachelor of Engineering, Computer Science\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item CGPA: 9.0
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Dec 2020 – Jul 2022
+        }
+            \textbf{ALVA'S PU College, Mangaluru}, Pre-University (PCMB)\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Percentage: 97.33\%
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Jun 2016 – Mar 2020
+        }
+            \textbf{Jawahar Navodaya Vidyalaya, Ballari}, CBSE | SSLC\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Percentage: 91\%
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Projects}
+
+        \begin{twocolentry}{
+            \href{https://github.com/ritheshan/FoodLoop}{\faGithub}
+        }
+            \textbf{FoodLoop} -- Node.js, Express, React, IPFS, Hardhat\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item A full-stack donation platform that connects food donors with NGOs to reduce food waste
+                \item Integrated dynamic dashboards, real-time geolocation, and blockchain for donation tracking and NFT certificate minting
+                \item Used Node.js, Express, React, IPFS, and Hardhat
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/ritheshan/blog-app}{\faGithub}
+        }
+            \textbf{CilliBlog} -- MERN Stack\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item A modern blog platform using the MERN stack, supporting user authentication, CRUD operations for posts, and responsive UI
+                \item Implemented JWT-based authentication, route protection, and a modular codebase for scalability
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/ritheshan/VoxBiz}{\faGithub}
+        }
+            \textbf{VoxBiz} -- Gen-AI, NLP, MERN Stack\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item A Gen-AI-driven solution enabling voice-to-visualization capabilities for business owners to query databases using voice input
+                \item Converts voice to text, generates SQL queries using NLP, executes them, and displays real-time data as tables and charts
+                \item Designed for decision-makers with no technical expertise
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/ritheshan}{\faGithub}
+        }
+            \textbf{Other Projects}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{Journey Quest}: A country-tracking travel app built using Node.js, Express, and PostgreSQL, featuring interactive SVG-based world map visualizations
+                \item \textbf{Password Manager}: A Python-based CLI tool that uses the Cryptography library to securely encrypt and store passwords
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Key Competencies}
+
+        \begin{onecolentry}
+            \textbf{Languages \& Tools:} C++, Python, SQL, TypeScript, Git
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Web Development:} React.js, Node.js, Express.js, PostgreSQL, MongoDB, REST APIs
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Problem Solving:} Data Structures and Algorithms (DSA)
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Cybersecurity:} Security Fundamentals, OWASP basics
+        \end{onecolentry}
+
+    \section{Activities \& Achievements}
+
+        \begin{twocolentry}{
+            April 2025
+        }
+            \textbf{Finalist – HackToFuture 3.0}\end{twocolentry}
+        \vspace{0.05 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Selected among the top 30 teams nationally (700+ teams) at a 36-hour hackathon hosted by The Sceptix Club, SJEC, Mangaluru. Built VoxBiz – an AI-powered platform that converts natural language to SQL with real-time data visualizations using React, Recharts \& NLTK. Team: RejuveNation — Sankalp Nadiger, Shrihari A S, Kushal S, Rithesh N.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            April 2025
+        }
+            \textbf{HackXelerate'25 – KPRIET, Coimbatore}\end{twocolentry}
+        \vspace{0.05 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed FoodLoop, a blockchain-integrated food redistribution app during a 24-hour hackathon organized by the CSBS Department. Features include Admin Dashboard, Spoilage Detection (Google Vision), NFT delivery proofs, Volunteer Navigation, and Mobile App (Flutter). Team: Hitanshi Singh, Sujith Kumar, Rithesh N, Sankalp Nadiger, Namrata Peshwa.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            7th – 10th February 2024
+        }
+            \textbf{DiPASL Tech Exhibition}\end{twocolentry}
+        \vspace{0.05 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Showcased the project 'DiPASL (Different Perspective of American Sign Language)' at Suttur Jatra Tech Exhibition, where we used an innovative solution using real-time hand gesture recognition over a three-day public expo.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+        2024 - 2025
+        }
+            \textbf{Community Volunteer}\end{twocolentry}
+        \vspace{0.05 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Volunteered at events organized by Project ReachOut NGO, contributing to community outreach initiatives and supporting various social causes.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Key Highlights}
+
+        \begin{onecolentry}
+            \textbf{Languages:} English (Professional), Kannada (Native), Hindi (Limited)
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Interests:} Coding, Reading, Cricket, Table Tennis
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Achievements:} KCET RANK (944), Regional Level Table Tennis Winner
+        \end{onecolentry}
+
+\end{document}
