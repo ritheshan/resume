@@ -1,0 +1,393 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Rithesh N's CV},
+    pdfauthor={Rithesh N},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage{graphicx} % for including images
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+\usepackage{hyperref}
+\begin{document}
+
+  \begin{header}
+    \fontsize{25 pt}{25 pt}\selectfont RITHESH N
+
+    \vspace{5 pt}
+
+    \normalsize
+    \mbox{\raisebox{-0.1\height}\faLinkedin\hspace{2pt}\href{https://www.linkedin.com/in/ritheshan/}{ritheshan}} \hspace{10pt}%
+    \mbox{\raisebox{-0.1\height}\faEnvelope\hspace{2pt}\href{mailto:ritheshanbgl@gmail.com}{ritheshanbgl@gmail.com}} \hspace{10pt}%
+    \mbox{\raisebox{-0.1\height}{\includegraphics[height=0.3cm, width=0.3cm]{leetcode.png}}\hspace{2pt}\href{https://leetcode.com/rithesh_n}{rithesh\_n}}%
+\end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+    \section{Experience}
+
+        \begin{twocolentry}{
+            May 2025 – Jul 2025
+        }
+            \textbf{Deloitte – Full-Stack Engineer Intern}, Bengaluru, India\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Improved query efficiency by 60\% by engineering an AI-powered data assistant using LangChain and FastAPI for natural language-to-SQL conversion.
+                \item Cut manual reporting time by 40\% by orchestrating the development of a React and DuckDB analytics platform for interactive data exploration.
+                \item Reduced security vulnerabilities by 30\% through the strategic implementation of robust input validation, adhering to OWASP standards.
+                \item Authored high-quality, scalable TypeScript code achieving 95\% test coverage while actively contributing across the full Software Development Lifecycle (SDLC) in an agile environment.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Education}
+
+        \begin{twocolentry}{
+            Nov 2022 – Present
+        }
+            \textbf{JSS Science and Technology University (SJCE), Mysore}, Bachelor of Engineering, Computer Science\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item CGPA: 9.0/10
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Dec 2020 – Jul 2022
+        }
+            \textbf{ALVA'S PU College, Mangaluru}, Pre-University (PCMB)\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Percentage: 97.33\%
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Jun 2016 – Mar 2020
+        }
+            \textbf{Jawahar Navodaya Vidyalaya, Ballari}, CBSE | SSLC\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Percentage: 91\%
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Projects}
+
+        \begin{twocolentry}{
+            \href{https://github.com/ritheshan/FoodLoop}{\faGithub}
+        }
+            \textbf{FoodLoop} -- Node.js, Express, React, IPFS, Hardhat\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Reduced food waste by 20\% in pilot tests by architecting a full-stack MERN donation platform connecting donors with NGOs.
+                \item Improved donor-NGO matching accuracy by 35\% by integrating dynamic admin dashboards and real-time geolocation to streamline logistics.
+                \item Enhanced platform trust by engineering a novel transparency feature using Blockchain (IPFS, Hardhat) to mint NFT certificates for tamper-proof donation records.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/ritheshan/VoxBiz}{\faGithub}
+        }
+            \textbf{VoxBiz} -- Gen-AI, NLP, MERN Stack\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Reduced dependency on data engineers by 50\% by spearheading the creation of a Gen-AI analytics tool that empowers non-technical users to query databases with natural language.
+                \item Accelerated decision-making speed for test users by 45\% by automating SQL query generation from voice input via a sophisticated NLP pipeline, feeding into real-time Recharts dashboards.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/ritheshan/blog-app}{\faGithub}
+        }
+            \textbf{CilliBlog} -- MERN Stack\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Engineered a scalable and responsive blogging platform that supported 100+ posts and achieved high user engagement during internal testing.
+                \item Blocked 100\% of unauthorized access attempts in QA testing by designing a robust security model with JWT-based authentication and role-based access control.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \href{https://github.com/ritheshan}{\faGithub}
+        }
+            \textbf{Other Projects}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{Journey Quest}: Architected a country-tracking travel application using Node.js, Express, and PostgreSQL, featuring interactive SVG-based world map visualizations.
+                \item \textbf{Password Manager}: Created a Python-based CLI tool leveraging the Cryptography library to securely encrypt and store passwords.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Skills}
+
+        \begin{onecolentry}
+            \textbf{Cybersecurity:} Applied hands-on skills in network security, incident response with SIEM tools, and secure software development (OWASP Top 10), gained through the Google Cybersecurity Professional Certificate.
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Languages \& Tools:} C++, Python, SQL, TypeScript, Git.
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Web Development (Full-Stack):} React.js, Node.js, Express.js, PostgreSQL, MongoDB, REST APIs.
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{AI \& Blockchain:} Gen-AI, NLP, Blockchain, Hardhat, IPFS.
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Problem Solving:} Data Structures and Algorithms (DSA).
+        \end{onecolentry}
+
+    \section{Achievements \& Activities}
+
+        \begin{twocolentry}{
+            Apr 2024
+        }
+            \textbf{Finalist (Top 4\%), HackToFuture 3.0}\end{twocolentry}
+
+        \vspace{0.05 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Selected as a top 30 team out of 700+ for developing 'VoxBiz', an innovative NLP-driven data analytics and visualization tool, during a national 36-hour hackathon.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Apr 2024
+        }
+            \textbf{HackXelerate '25}\end{twocolentry}
+
+        \vspace{0.05 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Conceptualized and built the 'FoodLoop' prototype in 24 hours, integrating AI-based spoilage detection and NFT-based proofs on a Blockchain.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Feb 2024
+        }
+            \textbf{3rd Place, DSC JSSSTU Capture The Flag (CTF) Competition}\end{twocolentry}
+
+        \vspace{0.05 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Secured a podium finish in a multi-day cybersecurity competition, excelling in challenges covering cryptography, web security, and reverse engineering.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Feb 2024
+        }
+            \textbf{Exhibitor, DIPASL Tech Exhibition}\end{twocolentry}
+
+        \vspace{0.05 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Presented 'DiPASL', a real-time American Sign Language (ASL) hand gesture recognition system, to over 500 visitors during a three-day public expo.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            2024-25
+        }
+            \textbf{Community Volunteer}\end{twocolentry}
+
+        \vspace{0.05 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Supported Project ReachOut NGO initiatives by volunteering at community events, engaging over 200 beneficiaries.
+            \end{highlights}
+        \end{onecolentry}
+    \section{Key Highlights}
+
+        \begin{onecolentry}
+            \textbf{Languages:} English (Professional), Kannada (Native), Hindi (Limited)
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Interests:} Coding, Reading, Cricket, Table Tennis
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Achievements:} KCET Rank: 944 | Regional Level Table Tennis Winner
+        \end{onecolentry}
+   
+\end{document}
