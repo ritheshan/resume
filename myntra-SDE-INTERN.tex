@@ -1,0 +1,397 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{lmodern} % clean, professional font
+\usepackage[T1]{fontenc}
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\definecolor{blueHighlight}{RGB}{0, 102, 204} % define blue color for highlights
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Rithesh N's CV},
+    pdfauthor={Rithesh N},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage{graphicx} % for including images
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+\usepackage{hyperref}
+\begin{document}
+
+\begin{header}
+    \fontsize{30}{36}\selectfont
+\href{https://rithesh.engineer/}{{RITHESH N}}
+
+    \vspace{5 pt}
+
+    \normalsize
+    \mbox{\raisebox{-0.1\height}{\Large \faLinkedin}\hspace{3pt}\href{https://www.linkedin.com/in/ritheshan/}{\textcolor{blueHighlight}{\large LinkedIn}}} \hspace{12pt}%
+\mbox{\raisebox{-0.15\height}{\Large \faEnvelope}\hspace{3pt}\href{mailto:ritheshanbgl@gmail.com}{\textcolor{blueHighlight}{\large ritheshanbgl@gmail.com}}} \hspace{8pt}%
+\mbox{\raisebox{-0.15\height}{\includegraphics[height=0.4cm, width=0.5cm]{leetcode.png}}\hspace{3pt}\href{https://leetcode.com/rithesh_n}{\textcolor{blueHighlight}{\large LeetCode}}}%
+\end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+    \section{Professional Experience}
+
+       \begin{twocolentry}{
+    May 2025 – Jul 2025
+}
+    \textbf{\textcolor{blueHighlight}{\large Deloitte} – Product Engineer Intern}, Bengaluru, India
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Improved query efficiency by 60\% by engineering an AI-powered data assistant using \textbf{LangChain} and \textbf{FastAPI} for natural \textbf{language-to-SQL} conversion.
+        \item Cut manual reporting time by 40\% by developing a \textbf{React} and \textbf{DuckDB} analytics platform for interactive data exploration and collaborating effectively in a cross-functional team.
+        \item Reduced security vulnerabilities through the strategic implementation of robust input validation, adhering to \textbf{OWASP standards}.
+        \item Delivered high-quality, scalable \textbf{TypeScript} code with 95\% test coverage across the full \textbf{Software Development Lifecycle (SDLC)} in an \textbf{Agile/Scrum} environment, demonstrating effective communication and ownership.
+    \end{highlights}
+\end{onecolentry}
+
+    \section{Education}
+
+        \begin{twocolentry}{
+            Nov 2022 – Present
+        }
+            \textbf{JSS STU (SJCE), Mysore}, Bachelor of Engineering, Computer Science\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item CGPA: 9.0/10
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Dec 2020 – Jul 2022
+        }
+            \textbf{ALVA'S PU College, Mangaluru}, Pre-University (PCMB)\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Percentage: 97.33\%
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Jun 2016 – Mar 2020
+        }
+            \textbf{Jawahar Navodaya Vidyalaya, Ballari}, CBSE | SSLC\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Percentage: 91\%
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Projects}
+
+      \begin{twocolentry}{
+    \href{https://github.com/ritheshan/FoodLoop}{\faGithub}
+}
+    \textbf{\href{https://food-loop-123.vercel.app}{\underline{\textcolor{blueHighlight}{\large FoodLoop}}} – Food Donation Project} -- {MERN Stack}, {Blockchain}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Architected a full-stack \textbf{MERN} donation platform that reduced food waste by 20\% in pilot tests and improved donor-NGO matching accuracy by 35\% using \textbf{dynamic dashboards} and \textbf{real-time geolocation}.  
+        \item Enhanced transparency and trust by integrating \textbf{Blockchain} with \textbf{IPFS} and \textbf{Hardhat} to mint \textbf{NFT certificates} for tamper-proof donation records.  
+    \end{highlights}
+\end{onecolentry}
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+    \href{https://github.com/ritheshan/VoxBiz}{\faGithub}
+}
+    \textbf{\href{https://voxbiz.vercel.app/}{\underline{\textcolor{blueHighlight}{\large VoxBiz}}} – Voice-to-Visualization} -- {Gen-AI}, {NLP}, {MERN Stack}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Reduced dependency on data engineers by 50\% by spearheading the creation of a \textbf{Gen-AI analytics tool} that empowers non-technical users to query databases with natural language.
+        \item Accelerated decision-making speed for test users by 45\% by automating \textbf{SQL query generation} from \textbf{voice input} via a sophisticated \textbf{NLP pipeline}, feeding into real-time \textbf{Recharts dashboards}.
+    \end{highlights}
+\end{onecolentry}
+
+        \vspace{0.2 cm}
+        \begin{twocolentry}{
+    \href{https://github.com/ritheshan/Shopora}{\faGithub}
+}
+    \textbf{\href{https://mern-store-gold.vercel.app/}{\underline{\textcolor{blueHighlight}{\large Shopora}}}– Ecommerce Platform Project} -- MERN Stack
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Developed a full-featured e-commerce platform with \textbf{buyer, seller, and admin workflows}, enabling product browsing, brand management, and secure transactions through \textbf{JWT authentication, role-based access control, and protected APIs}.  
+        \item Engineered a scalable architecture using \textbf{Node.js, Express, MongoDB, React, Redux, and Docker}, and deployed frontend and backend on \textbf{Vercel} with seamless CI/CD for high performance across devices.  
+    \end{highlights}
+\end{onecolentry}
+
+        \begin{twocolentry}{
+    \href{https://github.com/ritheshan}{\faGithub}
+}
+    \textbf {Other Projects}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item \textbf{\href{https://cilliblog.vercel.app/}{\underline{\textcolor{blueHighlight}{CilliBlog}}}}: Built a full-stack MERN blogging platform with role-based access control and JWT authentication. 
+        \item \textbf{\textcolor{blueHighlight}{Journey Quest}}: Architected a country-tracking travel application using Node.js, Express, and PostgreSQL, featuring interactive SVG-based world map visualizations.
+        \item \textbf{\textcolor{blueHighlight}{Password Manager}}: Created a Python-based CLI tool leveraging the Cryptography library to securely encrypt and store passwords.
+    \end{highlights}
+\end{onecolentry}
+
+    \section{Technical Skills}
+
+        \begin{onecolentry}
+    \textbf{Programming \& Problem Solving:} C++, Python, SQL, Data Structures \& Algorithms (DSA)
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{onecolentry}
+    \textbf{Web Development (Full-Stack):} React.js, Node.js, Express.js, TypeScript, PostgreSQL, MongoDB, REST APIs
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{onecolentry}
+    \textbf{Tools \& Platforms:} Git/GitHub, Docker, Microsoft Azure
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{onecolentry}
+    \textbf{Cybersecurity:} Applied hands-on skills in network security, incident response with SIEM tools, and secure software development (OWASP Top 10), gained through the Google \textbf{Cybersecurity Professional Certificate}
+\end{onecolentry}
+
+    \section{Achievements \& Activities}
+
+\begin{twocolentry}{
+    Apr 2024
+}
+    \textbf{\textcolor{blueHighlight}{Finalist (Top 4\%), HackToFuture 3.0}}
+\end{twocolentry}
+
+\vspace{0.05 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Selected as a top 30 team out of 700+ for developing \textbf{VoxBiz}, an innovative \textbf{NLP-driven data analytics and visualization tool}, during a national 36-hour hackathon.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{
+    Apr 2024
+}
+    \textbf{\textcolor{blueHighlight}{HackXelerate '25}}
+\end{twocolentry}
+
+\vspace{0.05 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Conceptualized and built the \textbf{FoodLoop prototype} in 24 hours, integrating \textbf{AI-based spoilage detection} and \textbf{NFT-based proofs} on a \textbf{Blockchain}.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{
+    Feb 2024
+}
+    \textbf{\textcolor{blueHighlight}{3rd Place, DSC JSSSTU Capture The Flag (CTF) Competition}}
+\end{twocolentry}
+
+\vspace{0.05 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Secured a podium finish in a multi-day \textbf{cybersecurity competition}, excelling in challenges covering \textbf{cryptography}, \textbf{web security}, and \textbf{reverse engineering}.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{
+    Feb 2024
+}
+    \textbf{\textcolor{blueHighlight}{Exhibitor, DIPASL Tech Exhibition}}
+\end{twocolentry}
+
+\vspace{0.05 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Presented \textbf{DiPASL}, a real-time \textbf{American Sign Language (ASL) hand gesture recognition system}, to over 500 visitors during a three-day public expo.
+    \end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{
+    2024-25
+}
+    \textbf{\textcolor{blueHighlight}{Community Volunteer}}
+\end{twocolentry}
+
+\vspace{0.05 cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item Supported \textbf{Project ReachOut NGO} initiatives by volunteering at community events, engaging over 200 beneficiaries.
+    \end{highlights}
+\end{onecolentry}
+    \section{Key Highlights}
+
+        \begin{onecolentry}
+            \textbf{Languages:} English (Professional), Kannada (Native), Hindi (Limited)
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Interests:} Coding, Reading, Cricket, Table Tennis
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Achievements:} KCET Rank: 944 | Regional Level Table Tennis Winner
+        \end{onecolentry}
+   
+\end{document}
